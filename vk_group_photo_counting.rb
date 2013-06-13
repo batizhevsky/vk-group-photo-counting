@@ -1,5 +1,7 @@
 class VkGroupPhotoCounting < Sinatra::Base
   register Sinatra::StaticAssets
+  register Sinatra::Twitter::Bootstrap::Assets
+
   include Oauth
   include VkLikesCounter
 
@@ -7,12 +9,13 @@ class VkGroupPhotoCounting < Sinatra::Base
   set :sessions, true
   set :inline_templates, true
   set :session_secret, "ieGaixa3eeoNg3oogAhP8soo1"
+  set :logging, Logger::DEBUG
 
   # set :auth { |value| TODO: check auth
 
 
-  get "/" do
-    erb :welcome
+  get "/", layout: :layout do
+    haml :welcome
   end
 
   get "/groups" do

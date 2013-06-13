@@ -12,6 +12,7 @@ end
 
 # Load app
 require 'sinatra/static_assets'
+require 'haml'
 require 'vk_group_photo_counting'
 
 run VkGroupPhotoCounting

@@ -10,6 +10,7 @@ gem 'vkontakte_api', github: '7even/vkontakte_api'
 
 gem 'haml'
 gem 'sinatra-static-assets'
+gem 'sinatra-twitter-bootstrap', :require => 'sinatra/twitter-bootstrap'
 
 gem 'thin'
 
