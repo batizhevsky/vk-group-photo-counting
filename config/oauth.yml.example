@@ -1,0 +1,14 @@
+development: &defaults
+  :vkontakte:
+    :app_id: '1111'
+    :app_secret: '11111111'
+    :app_permissions: 'notify,groups,photos,offline'
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

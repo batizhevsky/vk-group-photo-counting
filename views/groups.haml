@@ -1,0 +1,8 @@
+%h1 Список групп
+
+%ol
+  - @groups.each do |group|
+    %li 
+      = image_tag(group.photo)
+      = link_to(group.name, "/groups/#{group.gid}")
+

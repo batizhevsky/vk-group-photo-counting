@@ -1,0 +1,11 @@
+%h1
+  -# = image_tag(@group.photo)
+  -# = @group.name
+
+
+%h3 Выбирите альбом:
+%ol
+  - @group_albums.each do |album|
+    %li 
+      = image_tag album.thumb_src
+      = link_to(album.title, "/groups/#{params[:id]}/albums/#{album.aid}")
