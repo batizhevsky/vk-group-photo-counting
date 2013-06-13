@@ -90,7 +90,7 @@ module VkLikesCounter
     end
 
     def info
-      @client.photos.getAlbums(gid: @gid).select{ |a| a.aid == @id }
+      @client.photos.getAlbums(oid: "-#@gid", aids: @id).first
     end
 
     def title

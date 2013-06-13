@@ -1,9 +1,12 @@
-%h1= @album.info.inspect
+%h1= @album.title
 
-%ol
+%ol.result
   - @photos.sort{ |x,y| @group.users_likes_ids(y) <=> @group.users_likes_ids(x) }.each do |photo|
     %li
-      = image_tag(photo.src)
-      %p= photo.text
-      %p= "Нравится: #{photo.likes[:count]}"
-      %p= "Голоса из группы: #{ @group.users_likes_ids(photo) }"
+      .thumbnail
+        .image= image_tag(photo.src)
+        .text
+          %h4= photo.text
+          %p= "Нравится: #{photo.likes[:count]}"
+          %p= "Голоса из группы: #{ @group.users_likes_ids(photo) }"
+        .clear

@@ -1,8 +1,10 @@
 %html
   %head
     = bootstrap_assets
+    = stylesheet_link_tag "stylesheets/main.css"
   %body
-    - container :fluid do
-      - row do
-        - span3 do
+    .container
+      .row 
+        .span10
           = yield
+        .span3

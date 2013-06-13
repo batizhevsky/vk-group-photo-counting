@@ -11,11 +11,19 @@ class VkGroupPhotoCounting < Sinatra::Base
   set :session_secret, "ieGaixa3eeoNg3oogAhP8soo1"
   set :logging, Logger::DEBUG
 
-  # set :auth { |value| TODO: check auth
-
-
   get "/", layout: :layout do
     haml :welcome
+  end
+
+  get '/auth/:provider/callback' do
+    session['user_id'] = auth_hash
+    session['vk'] = VkMain.new(auth_hash[:credentials][:token])
+
+    redirect '/groups'
+  end
+
+  before '/groups*' do
+    check_auth!
   end
 
   get "/groups" do
@@ -39,13 +47,6 @@ class VkGroupPhotoCounting < Sinatra::Base
     haml :show_album
   end
 
-  get '/auth/:provider/callback' do
-    session['user_id'] = auth_hash
-    session['vk'] = VkMain.new(auth_hash[:credentials][:token])
-
-    redirect '/groups'
-  end
-
   private
 
   def auth_hash
@@ -58,5 +59,9 @@ class VkGroupPhotoCounting < Sinatra::Base
 
   def vk
     session['vk']
+  end
+
+  def check_auth!
+    redirect '/' unless vk
   end
 end

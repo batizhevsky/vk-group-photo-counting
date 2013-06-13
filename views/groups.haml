@@ -1,8 +1,8 @@
-%h1 Список групп
+.page-header
+  %h1  Группы:
 
-%ol
+%ul.thumbnails
   - @groups.each do |group|
-    %li 
-      = image_tag(group.photo)
-      = link_to(group.name, "/groups/#{group.gid}")
-
+    %li.span4
+      %a.thumbnail{href: "/groups/#{group.gid}"}
+        = image_tag(group.photo_big)

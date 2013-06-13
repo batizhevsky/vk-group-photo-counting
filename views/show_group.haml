@@ -4,8 +4,11 @@
 
 
 %h3 Выбирите альбом:
-%ol
+%ul.thumbnails.per5
   - @group_albums.each do |album|
-    %li 
-      = image_tag album.thumb_src
-      = link_to(album.title, "/groups/#{params[:id]}/albums/#{album.aid}")
+    %li.span2
+      .thumbnail
+        %a{href: "/groups/#{params[:id]}/albums/#{album.aid}"}
+          = image_tag(album.thumb_src)
+        %h4
+          .break-word= album.title
