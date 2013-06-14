@@ -36,6 +36,10 @@ module VkLikesCounter
       @client.photos.getAlbums(gid: @id, need_covers: 1)
     end
 
+    def gid
+      @id   
+    end
+
     def album(id)
       VkAlbum.new(@client, id, @id)
     end

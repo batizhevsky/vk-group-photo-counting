@@ -4,7 +4,7 @@
   - @photos.sort{ |x,y| @group.users_likes_ids(y) <=> @group.users_likes_ids(x) }.each do |photo|
     %li
       .thumbnail
-        .image= image_tag(photo.src)
+        .image= link_to(image_tag(photo.src), "https://vk.com/photo-#{@group.gid}_#{photo.pid}")
         .text
           %h4= photo.text
           %p= "Нравится: #{photo.likes[:count]}"
